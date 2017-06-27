@@ -7,18 +7,12 @@
     - Domain········: ${4:[]}
     - Context·······: ${5:\{\}}
     - Parent menu ··: ${6:base.menu_custom}
-    - View priority·: ${7:16}    Sequence····: ${8:10}
     - Action help···: ${9:Something about ${2/(.)/$1/g}}
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
 <!-- Tree view for "${2/(.)/\1/g}" -->
 <record id="view_${2/\./\_/g}_tree" model="ir.ui.view">
-    <field name="name">view.${2/\.+/\./g}.tree</field>
     <field name="model">${2/\.+/\./g}</field>
-    <field name="type">tree</field>
-    <field name="mode">primary</field>
-    <field name="priority" eval="${7/(.)/\1/g}" />
-    <field name="active" eval="True" />
     <field name="arch" type="xml">
         <tree string="${2/\./\_/g}_tree" create="1" delete="1" edit="1">
             <field name="${3/(.)/\1/g}" />
@@ -29,12 +23,7 @@
 
 <!-- Form view for "${2/(.)/\1/g}" -->
 <record id="view_${2/\./\_/g}_form" model="ir.ui.view">
-    <field name="name">view.${2/\.+/\./g}.form</field>
     <field name="model">${2/\.+/\./g}</field>
-    <field name="type">form</field>
-    <field name="mode">primary</field>
-    <field name="priority" eval="${7/(.)/\1/g}" />
-    <field name="active" eval="True" />
     <field name="arch" type="xml">
         <form string="${2/\./\_/g}_form" create="1" delete="1" edit="1">
             <sheet>
@@ -47,18 +36,17 @@
                 </div>
                 <!-- ··· -->
             </sheet>
+            <footer>
+                <button name="apply_" string="Apply" type="object" class="oe_highlight"/>
+                <button special="cancel" string="Cancel" class="oe_link"/>
+            </footer>
         </form>
     </field>
 </record>
 
 <!-- Search view for "${2/(.)/\1/g}" -->
 <record id="view_${2/\./\_/g}_search" model="ir.ui.view">
-    <field name="name">view.${2/\.+/\./g}.search</field>
     <field name="model">${2/\.+/\./g}</field>
-    <field name="type">search</field>
-    <field name="mode">primary</field>
-    <field name="priority" eval="${7/(.)/\1/g}" />
-    <field name="active" eval="True" />
     <field name="arch" type="xml">
         <search string="${2/\./\_/g}_search">
             <field name="${3/(.)/\1/g}" />
@@ -73,7 +61,6 @@
     <field name="name">${1/(.)/\1/g}</field>
     <field name="res_model">${2/\.+/\./g}</field>
     <field name="view_mode">tree,form</field>
-    <field name="view_type">form</field>
     <field name="target">current</field>
     <field name="domain">${4/(.)/\1/g}</field>
     <field name="context">${5/(.)/\1/g}</field>
